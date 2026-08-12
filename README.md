@@ -1,140 +1,64 @@
-# Portfolio Site — Contact & Website Deployment
+# Khadija Tariq — Portfolio Website
 
-A single-page, static developer portfolio styled as a code editor, with an
-**About**, **Projects**, and **Contact** section. No build tools or
-frameworks required — it's plain HTML/CSS/JS, so it can be deployed as-is
-to GitHub Pages, Netlify, or Vercel.
+A single-page developer portfolio for Khadija Tariq — Backend Development & AI —
+styled as a code editor. Built with plain HTML, CSS, and vanilla JavaScript,
+no frameworks or build step.
+
+**Live site:** https://khadijatariq-portfolio-site.vercel.app/
+**Repo:** https://github.com/KHADIJA-TARIQ189/khadijatariq_portfolio-site
+
+## Preview
+
+`about.js` → `projects.js` → `contact.js` — the whole site is written as
+three "files" in a fake code editor UI, navigated by sidebar tabs (or a
+slide-out ☰ menu on mobile).
+
+## Features
+
+- Editor-themed UI: title bar, sidebar file tabs, syntax-highlighted text
+- Scroll-spy navigation — active tab updates via `IntersectionObserver`
+- Responsive layout with a collapsible mobile nav (breakpoints at 860px / 680px / 420px)
+- Accessible: visible keyboard focus states, `aria-expanded` on the menu toggle, respects `prefers-reduced-motion`
+- Zero dependencies, zero build step — pure static HTML/CSS/JS
+
+## Tech stack
+
+`HTML5` · `CSS3` (custom properties, Grid, clamp()) · `Vanilla JavaScript` · Fonts: JetBrains Mono + Inter
+
+## Project structure
 
 ```
-portfolio/
-├── index.html
-├── style.css
-├── script.js
-├── .nojekyll                    # tells GitHub Pages not to run Jekyll
-├── netlify.toml                 # Netlify build/publish config
-├── vercel.json                  # Vercel static build config
-├── package.json                 # optional local preview script
-└── .github/workflows/deploy.yml # auto-deploy to GitHub Pages on push
+├── index.html                    # markup for about / projects / contact
+├── style.css                     # all styling, incl. responsive rules
+├── script.js                     # mobile menu + scroll-spy nav
+├── favicon.svg
+├── .nojekyll                     # disables Jekyll processing on GitHub Pages
+├── netlify.toml                  # Netlify config + cache headers
+├── vercel.json                   # Vercel config + cache headers
+├── package.json                  # local dev script only
+└── .github/workflows/deploy.yml  # auto-deploy to GitHub Pages on push to main
 ```
 
-## 1. Before you deploy — fill in your real contact info
-
-Open `index.html`, find the `<section id="contact">` block, and replace
-the three placeholder links:
-
-```html
-<a class="contact-row" href="https://github.com/your-username" ...>
-<a class="contact-row" href="https://linkedin.com/in/your-username" ...>
-<a class="contact-row" href="mailto:you@example.com">
-```
-
-Replace `your-username` and `you@example.com` with your real GitHub
-profile, LinkedIn profile, and email address. You can also edit the name,
-bio, and project cards in the **About** and **Projects** sections.
-
-## 2. Test it locally first
-
-You only need a static file server — any of these work:
+## Running locally
 
 ```bash
-# Option A: Node's `serve` package (no install needed, via npx)
 npx serve .
-
-# Option B: Python's built-in server
+# or
 python3 -m http.server 8000
-
-# Option C: the npm script included in this project
-npm run dev
 ```
 
-Then open the printed URL (e.g. `http://localhost:3000` or
-`http://localhost:8000`) in your browser.
+## Deployment
 
-## 3. Deploy — pick one
+Already configured for all three of these — pick one:
 
-### Option A: GitHub Pages
+| Platform | How |
+|---|---|
+| **Vercel** | `vercel --prod` (or connect the GitHub repo in the Vercel dashboard for auto-deploys on push) |
+| **Netlify** | `netlify deploy --prod`, publish directory `.` |
+| **GitHub Pages** | Push to `main` — `.github/workflows/deploy.yml` builds and publishes automatically. Enable it once under **Settings → Pages → Source → GitHub Actions** |
 
-```bash
-# from inside the portfolio/ folder
-git init
-git add .
-git commit -m "Initial portfolio commit"
-git branch -M main
-git remote add origin https://github.com/your-username/your-repo.git
-git push -u origin main
-```
+## Contact
 
-Then in your GitHub repo: **Settings → Pages → Build and deployment →
-Source → GitHub Actions**. The included workflow at
-`.github/workflows/deploy.yml` will build and publish the site
-automatically on every push to `main`. Your live URL will be:
-
-```
-https://your-username.github.io/your-repo/
-```
-
-*(Alternatively, without Actions: Settings → Pages → Source → “Deploy from
-a branch” → `main` / `/ (root)`.)*
-
-### Option B: Netlify
-
-```bash
-npm install -g netlify-cli
-netlify login
-netlify deploy --prod
-```
-
-When prompted for the publish directory, enter `.` (the project root).
-Netlify will give you a live URL like `https://your-site-name.netlify.app`.
-You can also just drag-and-drop the project folder onto
-[app.netlify.com/drop](https://app.netlify.com/drop) for a one-off deploy
-with no CLI at all.
-
-### Option C: Vercel
-
-```bash
-npm install -g vercel
-vercel login
-vercel --prod
-```
-
-Accept the defaults (framework: "Other", no build command, output
-directory: `.`). Vercel will give you a live URL like
-`https://your-site-name.vercel.app`.
-
-## 4. Test the live site on different devices
-
-Once deployed, check the live URL works well everywhere:
-
-```bash
-# Quick automated check that the page returns 200 OK
-curl -I https://your-live-url-here
-
-# Lighthouse audit (performance / accessibility / best practices) via CLI
-npm install -g lighthouse
-lighthouse https://your-live-url-here --view
-```
-
-Manual checks:
-- **Desktop browser** — resize the window from wide to narrow and confirm
-  the layout reflows (the sidebar nav collapses into the ☰ menu below
-  680px width).
-- **Chrome DevTools device toolbar** — `Cmd/Ctrl + Shift + M`, then test
-  iPhone SE, iPhone 14 Pro, iPad Air, and a generic Android profile.
-- **Real phone/tablet** — open the live URL directly on your own devices
-  over Wi-Fi (not just localhost) and confirm:
-  - all three contact links open correctly (GitHub, LinkedIn, and the
-    email link should open your mail app),
-  - text is readable without zooming,
-  - tap targets (tabs, project links) are easy to hit,
-  - the mobile menu (☰ icon) opens and closes correctly.
-- **Cross-browser** — check Chrome, Firefox, and Safari at least once.
-
-## Notes
-
-- The site respects `prefers-reduced-motion` and has visible keyboard
-  focus states for accessibility.
-- All contact links use `target="_blank" rel="noopener noreferrer"` where
-  appropriate for safe external navigation.
-- No API keys, backend, or database — 100% static, so it works on every
-  platform above with zero configuration beyond what's included here.
+- GitHub: [github.com/KHADIJA-TARIQ189](https://github.com/KHADIJA-TARIQ189)
+- LinkedIn: [linkedin.com/in/khadija-tariq-a91ba0416](https://www.linkedin.com/in/khadija-tariq-a91ba0416)
+- Email: khadijatariq717@gmail.com
