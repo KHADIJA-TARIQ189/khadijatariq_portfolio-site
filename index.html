@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khadija Tariq — Portfolio</title>
+<meta name="description" content="Khadija Tariq — Backend Development &amp; AI portfolio — projects, about, and contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-glow" aria-hidden="true">
+  <span></span><span></span><span></span><span></span>
+</div>
+
+<div class="editor">
+
+  <!-- Title bar -->
+  <header class="titlebar">
+    <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="titlebar-path">khadija-tariq — portfolio — ~/site</div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="workspace">
+
+    <!-- Sidebar / file tabs = nav -->
+    <nav class="tabs" id="tabs">
+      <a href="#about" class="tab active" data-tab="about">
+        <span class="tab-icon">●</span> about.js
+      </a>
+      <a href="#projects" class="tab" data-tab="projects">
+        <span class="tab-icon">●</span> projects.js
+      </a>
+      <a href="#contact" class="tab" data-tab="contact">
+        <span class="tab-icon">●</span> contact.js
+      </a>
+    </nav>
+
+    <!-- Main editor pane -->
+    <main class="pane">
+
+      <!-- ABOUT -->
+      <section id="about" class="block">
+        <p class="comment">// about.js — who's writing this code</p>
+
+        <h1 class="hero-line">
+          <span class="kw">const</span> <span class="var">developer</span> <span class="op">=</span> {
+        </h1>
+
+        <div class="indent">
+          <p><span class="key">name:</span> <span class="str">"Khadija Tariq"</span>,</p>
+          <p><span class="key">role:</span> <span class="str">"Backend Development &amp; AI"</span>,</p>
+          <p><span class="key">basedIn:</span> <span class="str">"Wah Cantt, Taxila, Rawalpindi, Pakistan"</span>,</p>
+          <p class="bio-line">
+            <span class="key">bio:</span> <span class="str">"I build reliable backend systems and AI-powered
+            applications — from clean APIs to models that actually ship.
+            Currently open to internships and freelance backend / AI work."</span>,
+          </p>
+          <p><span class="key">stack:</span> [
+            <span class="str">"Python"</span>, <span class="str">"Node.js"</span>,
+            <span class="str">"Machine Learning"</span>, <span class="str">"APIs"</span>,
+            <span class="str">"SQL"</span>, <span class="str">"Git"</span>
+            ]</p>
+        </div>
+        <p class="close-brace">};</p>
+
+        <div class="cta-row">
+          <a href="#projects" class="btn btn-primary" data-tab="projects">
+            <span>View Projects</span>
+          </a>
+          <a href="#contact" class="btn btn-ghost" data-tab="contact">
+            <span>Get In Touch</span>
+          </a>
+        </div>
+
+        <p class="comment small">// scroll or click a tab above to keep reading →</p>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="block">
+        <p class="comment">// projects.js — things I've shipped</p>
+        <h2 class="section-title"><span class="kw">export</span> <span class="var">const</span> projects <span class="op">=</span> [</h2>
+
+        <div class="project-grid">
+
+          <article class="project-card">
+            <p class="proj-index">01</p>
+            <h3 class="proj-title">Task Flow</h3>
+            <p class="proj-desc">A drag-and-drop kanban board with real-time sync, built to
+              learn optimistic UI updates and WebSockets.</p>
+            <p class="proj-tags"><span class="str">"React"</span> · <span class="str">"Node"</span> · <span class="str">"Socket.io"</span></p>
+            <div class="proj-links">
+              <a href="#" class="proj-link">Live Demo →</a>
+              <a href="#" class="proj-link">Source →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <p class="proj-index">02</p>
+            <h3 class="proj-title">Weatherline</h3>
+            <p class="proj-desc">A minimal weather dashboard with animated forecasts and
+              a locally-cached offline mode.</p>
+            <p class="proj-tags"><span class="str">"JavaScript"</span> · <span class="str">"API"</span> · <span class="str">"PWA"</span></p>
+            <div class="proj-links">
+              <a href="#" class="proj-link">Live Demo →</a>
+              <a href="#" class="proj-link">Source →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <p class="proj-index">03</p>
+            <h3 class="proj-title">This Portfolio</h3>
+            <p class="proj-desc">The site you're reading right now — an editor-themed,
+              single-page portfolio deployed as a static site.</p>
+            <p class="proj-tags"><span class="str">"HTML"</span> · <span class="str">"CSS"</span> · <span class="str">"Vanilla JS"</span></p>
+            <div class="proj-links">
+              <a href="#" class="proj-link">Live Demo →</a>
+              <a href="#" class="proj-link">Source →</a>
+            </div>
+          </article>
+
+        </div>
+        <p class="close-brace">];</p>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="block">
+        <p class="comment">// contact.js — let's talk</p>
+        <h2 class="section-title"><span class="kw">const</span> <span class="var">contact</span> <span class="op">=</span> {</h2>
+
+        <div class="indent contact-list">
+
+          <a class="contact-row" href="https://github.com/KHADIJA-TARIQ189" target="_blank" rel="noopener noreferrer">
+            <span class="key">github:</span>
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.08.55-.17.55-.38
+              0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+              -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07
+              -1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
+              0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+              .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+              0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            </span>
+            <span class="str">"github.com/KHADIJA-TARIQ189"</span>,
+          </a>
+
+          <a class="contact-row" href="https://www.linkedin.com/in/khadija-tariq-a91ba0416" target="_blank" rel="noopener noreferrer">
+            <span class="key">linkedin:</span>
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor"><path d="M0 1.15C0 .52.53 0 1.19 0h13.62C15.47 0 16 .52 16 1.15v13.7c0 .63-.53
+              1.15-1.19 1.15H1.19C.53 16 0 15.48 0 14.85V1.15ZM4.75 13.4V6.17H2.4v7.23h2.35Zm-1.17-8.22c.82
+              0 1.33-.54 1.33-1.22-.01-.7-.51-1.23-1.31-1.23-.8 0-1.33.53-1.33 1.23 0 .68.51
+              1.22 1.3 1.22h.01ZM7.87 13.4V9.36c0-.22.02-.43.08-.59.18-.43.58-.88 1.25-.88.89
+              0 1.24.66 1.24 1.64v3.87h2.35V9.25c0-2.13-1.15-3.13-2.68-3.13-1.25
+              0-1.8.68-2.11 1.16h.02V6.17H5.66c.03.65 0 7.23 0 7.23h2.21Z"/></svg>
+            </span>
+            <span class="str">"linkedin.com/in/khadija-tariq-a91ba0416"</span>,
+          </a>
+
+          <a class="contact-row" href="mailto:khadijatariq717@gmail.com">
+            <span class="key">email:</span>
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor"><path d="M1.75 2A1.75 1.75 0 0 0 0 3.75v.28l8 4.4 8-4.4v-.28A1.75 1.75 0 0 0
+              14.25 2H1.75ZM16 5.1l-7.65 4.21a.75.75 0 0 1-.7 0L0 5.1v7.15C0 13.32.78
+              14.1 1.75 14.1h12.5c.97 0 1.75-.78 1.75-1.75V5.1Z"/></svg>
+            </span>
+            <span class="str">"khadijatariq717@gmail.com"</span>,
+          </a>
+
+        </div>
+        <p class="close-brace">};</p>
+
+        <p class="comment small">// thanks for reading — let's build something →</p>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="statusbar">
+    <span>● live</span>
+    <span class="statusbar-right">UTF-8 · Static Site · Built for GitHub Pages / Netlify / Vercel</span>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
