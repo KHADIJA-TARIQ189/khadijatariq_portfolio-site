@@ -1,39 +1,43 @@
-// script.js — tiny, dependency-free interactivity
+// script.js — mobile nav toggle + active section tracking
 
 document.addEventListener('DOMContentLoaded', () => {
-  const tabs = document.querySelectorAll('.tab');
-  const sections = document.querySelectorAll('.block');
-  const tabsNav = document.getElementById('tabs');
   const menuToggle = document.getElementById('menuToggle');
+  const tabs = document.getElementById('tabs');
+  const tabLinks = tabs ? tabs.querySelectorAll('.tab') : [];
+  const sections = document.querySelectorAll('main.pane .block');
 
-  // Mobile menu toggle
-  menuToggle.addEventListener('click', () => {
-    const isOpen = tabsNav.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', isOpen);
-  });
-
-  // Close mobile menu after choosing a tab
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabsNav.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
+  // --- Mobile hamburger menu ---
+  if (menuToggle && tabs) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = tabs.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
     });
-  });
 
-  // Highlight the active tab based on scroll position
-  const observer = new IntersectionObserver(
-    (entries) => {
+    // Close the menu after tapping a nav link (mobile)
+    tabLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        tabs.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // --- Active tab highlighting on scroll ---
+  if (sections.length && tabLinks.length) {
+    const setActive = (id) => {
+      tabLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.tab === id);
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          tabs.forEach(tab => {
-            tab.classList.toggle('active', tab.dataset.tab === id);
-          });
+          setActive(entry.target.id);
         }
       });
-    },
-    { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
-  );
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
 
-  sections.forEach(section => observer.observe(section));
+    sections.forEach(section => observer.observe(section));
+  }
 });
